@@ -1,0 +1,543 @@
+/* ESTILOS GENERALES - ALIENS ART */
+@font-face {
+    font-family: 'RetroAlien';
+    src: url('fonts/RetroAlien.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --color-bg: #000000;
+    --color-bg-alt: #0a0a0a;
+    --color-primary: #00ff00;
+    --color-secondary: #00cc99;
+    --color-accent: #ff00ff;
+    --color-text: #cccccc;
+    --glow-primary: 0 0 10px rgba(0, 255, 0, 0.7), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.3);
+    --glow-secondary: 0 0 10px rgba(0, 204, 153, 0.7), 0 0 20px rgba(0, 204, 153, 0.5);
+    --glow-accent: 0 0 10px rgba(255, 0, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'RetroAlien', monospace;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: url('images/background.svg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* EFECTOS CRT Y RETRO */
+.crt-effect {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.crt-effect::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0.15;
+}
+
+.scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-primary);
+    opacity: 0.75;
+    animation: scanline 6s linear infinite;
+    z-index: 999;
+}
+
+@keyframes scanline {
+    0% { top: 0; }
+    100% { top: 100%; }
+}
+
+/* TEXTOS Y TIPOGRAFÍA */
+.neon-text {
+    color: var(--color-primary);
+    text-shadow: var(--glow-primary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.glitch-text {
+    color: var(--color-primary);
+    text-shadow: var(--glow-primary);
+    position: relative;
+    animation: glitch 3s infinite;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@keyframes glitch {
+    0% { text-shadow: var(--glow-primary); }
+    25% { text-shadow: -2px 0 var(--color-accent), 2px 0 var(--color-secondary); }
+    26% { text-shadow: var(--glow-primary); }
+    50% { text-shadow: var(--glow-primary); }
+    74% { text-shadow: 2px 0 var(--color-accent), -2px 0 var(--color-secondary); }
+    75% { text-shadow: var(--glow-primary); }
+    100% { text-shadow: var(--glow-primary); }
+}
+
+.terminal-text {
+    font-family: monospace;
+    color: var(--color-text);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* LAYOUT Y GRID */
+.grid-container {
+    width: 90%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* HEADER Y NAVEGACIÓN */
+header {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+    position: relative;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.logo-container h1 {
+    font-size: 3.5rem;
+    letter-spacing: 8px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+.main-nav {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-nav li {
+    margin: 0 1rem;
+}
+
+.main-nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.main-nav a:hover, .main-nav a.active {
+    color: var(--color-primary);
+    text-shadow: var(--glow-primary);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+/* SECCIÓN HERO */
+.hero {
+    padding: 6rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.hero p {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-size: 1.2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: transparent;
+    color: var(--color-primary);
+    text-decoration: none;
+    border: 2px solid var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    box-shadow: var(--glow-primary);
+}
+
+/* SECCIÓN DE ARTISTAS */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--color-primary);
+    text-shadow: var(--glow-primary);
+    letter-spacing: 4px;
+}
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.artist-card {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--color-primary);
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.artist-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--glow-primary);
+}
+
+.artist-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-primary);
+}
+
+.artist-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* SECCIÓN ABOUT */
+.about-section {
+    padding: 5rem 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 5rem 0;
+}
+
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* SECCIÓN FEATURED */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+.featured-item {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--color-secondary);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.featured-image {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-secondary);
+}
+
+.featured-item h3 {
+    color: var(--color-secondary);
+    text-shadow: var(--glow-secondary);
+    margin-bottom: 1rem;
+}
+
+/* PÁGINA DE ARTISTA INDIVIDUAL */
+.artist-profile {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    margin: 3rem 0;
+}
+
+.artist-profile-image {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--color-primary);
+}
+
+.artist-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.artist-bio {
+    margin-bottom: 2rem;
+}
+
+.artist-works {
+    margin-top: 4rem;
+}
+
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.work-item {
+    border: 1px solid var(--color-primary);
+    padding: 1rem;
+}
+
+.work-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 1rem;
+}
+
+.work-video {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+/* PÁGINA DE CONTACTO */
+.contact-form-section {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.contact-form-section h3 {
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--color-primary);
+}
+
+.contact-info-section {
+    margin-bottom: 3rem;
+}
+
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-info-item {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-primary);
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+
+.contact-info-item h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.contact-info-item .social-links {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.contact-info-item .social-links a {
+    display: block;
+    margin: 0.5rem 0;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-info-item .social-links a:hover {
+    color: var(--color-primary);
+    text-shadow: var(--glow-primary);
+    padding-left: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-primary);
+    color: var(--color-text);
+    font-family: monospace;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: var(--glow-primary);
+}
+
+.submit-btn {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    font-family: 'RetroAlien', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    box-shadow: var(--glow-primary);
+}
+
+/* FOOTER */
+footer {
+    padding: 2rem 0;
+    border-top: 1px solid rgba(0, 255, 0, 0.3);
+    text-align: center;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: var(--color-text);
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--color-primary);
+    text-shadow: var(--glow-primary);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+    .logo-container h1 {
+        font-size: 3rem;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-container h1 {
+        font-size: 2.5rem;
+    }
+    
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .main-nav li {
+        margin: 0.5rem 0;
+    }
+    
+    .hero {
+        padding: 4rem 0;
+    }
+    
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    
+    .artist-profile {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container h1 {
+        font-size: 2rem;
+    }
+    
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+}

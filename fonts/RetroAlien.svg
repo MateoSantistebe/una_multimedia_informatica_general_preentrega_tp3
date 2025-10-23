@@ -1,0 +1,56 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <metadata>
+    Fuente RetroAlien para el sitio web Aliens Art
+  </metadata>
+  <defs>
+    <font id="RetroAlien" horiz-adv-x="1000">
+      <font-face font-family="RetroAlien" units-per-em="1000" ascent="800" descent="-200" />
+      
+      <!-- Letra A -->
+      <glyph unicode="A" horiz-adv-x="800" d="M400 800L800 0H600L550 150H250L200 0H0L400 800ZM500 300L400 550L300 300H500Z" />
+      
+      <!-- Letra R -->
+      <glyph unicode="R" horiz-adv-x="800" d="M0 0V800H450Q550 800 600 750Q650 700 650 600Q650 500 550 450Q700 400 700 250Q700 125 625 62Q550 0 400 0H0ZM200 450V650H400Q450 650 475 625Q500 600 500 550Q500 500 475 475Q450 450 400 450H200ZM200 150V300H400Q450 300 475 275Q500 250 500 225Q500 200 475 175Q450 150 400 150H200Z" />
+      
+      <!-- Letra T -->
+      <glyph unicode="T" horiz-adv-x="800" d="M300 0V650H50V800H750V650H500V0H300Z" />
+      
+      <!-- Letra I -->
+      <glyph unicode="I" horiz-adv-x="400" d="M100 0V800H300V0H100Z" />
+      
+      <!-- Letra S -->
+      <glyph unicode="S" horiz-adv-x="800" d="M50 250L200 300Q225 200 325 200Q375 200 400 225Q425 250 425 275Q425 325 375 350L200 425Q50 500 50 650Q50 725 125 775Q200 825 325 825Q500 825 575 700L425 650Q400 700 325 700Q225 700 225 650Q225 600 275 575L450 500Q600 425 600 275Q600 175 525 100Q450 25 325 25Q125 25 50 250Z" />
+      
+      <!-- Letra E -->
+      <glyph unicode="E" horiz-adv-x="800" d="M0 0V800H700V650H200V500H600V350H200V150H700V0H0Z" />
+      
+      <!-- Letra N -->
+      <glyph unicode="N" horiz-adv-x="800" d="M0 0V800H200L600 250V800H800V0H600L200 550V0H0Z" />
+      
+      <!-- Letra C -->
+      <glyph unicode="C" horiz-adv-x="800" d="M800 250L650 200Q600 100 500 100Q400 100 350 200Q300 300 300 400Q300 500 350 600Q400 700 500 700Q600 700 650 600L800 550Q750 700 650 750Q550 800 400 800Q250 800 125 675Q0 550 0 400Q0 250 125 125Q250 0 400 0Q550 0 650 50Q750 100 800 250Z" />
+      
+      <!-- Letra O -->
+      <glyph unicode="O" horiz-adv-x="800" d="M400 800Q250 800 125 675Q0 550 0 400Q0 250 125 125Q250 0 400 0Q550 0 675 125Q800 250 800 400Q800 550 675 675Q550 800 400 800ZM400 650Q500 650 550 575Q600 500 600 400Q600 300 550 225Q500 150 400 150Q300 150 250 225Q200 300 200 400Q200 500 250 575Q300 650 400 650Z" />
+      
+      <!-- Letra L -->
+      <glyph unicode="L" horiz-adv-x="700" d="M0 0V800H200V150H700V0H0Z" />
+      
+      <!-- Espacio -->
+      <glyph unicode=" " horiz-adv-x="500" d="" />
+      
+      <!-- Números -->
+      <glyph unicode="1" horiz-adv-x="500" d="M100 0V800H300V0H100Z" />
+      <glyph unicode="2" horiz-adv-x="800" d="M0 0V150L400 550Q450 600 450 650Q450 700 400 700Q300 700 300 550L100 600Q125 700 200 750Q275 800 400 800Q525 800 600 725Q675 650 675 550Q675 450 600 375L300 150H700V0H0Z" />
+      <glyph unicode="3" horiz-adv-x="800" d="M0 200L150 250Q175 150 300 150Q375 150 425 175Q475 200 475 250Q475 300 425 325Q375 350 300 350H200V500H300Q375 500 425 525Q475 550 475 600Q475 650 425 675Q375 700 300 700Q175 700 150 600L0 650Q50 800 300 800Q450 800 550 725Q650 650 650 550Q650 450 550 400Q650 350 650 250Q650 150 550 75Q450 0 300 0Q50 0 0 200Z" />
+      <glyph unicode="4" horiz-adv-x="800" d="M500 0V200H0V350L400 800H700V350H800V200H700V0H500ZM500 350V600L300 350H500Z" />
+      <glyph unicode="5" horiz-adv-x="800" d="M0 200L150 250Q175 150 300 150Q375 150 425 175Q475 200 475 250Q475 300 425 325Q375 350 300 350H200V800H700V650H400V500H500Q650 500 750 425Q850 350 850 250Q850 150 750 75Q650 0 500 0Q250 0 0 200Z" />
+      
+      <!-- Kerning -->
+      <hkern u1="A" u2="T" k="100" />
+      <hkern u1="T" u2="A" k="100" />
+    </font>
+  </defs>
+</svg>
