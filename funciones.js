@@ -1,6 +1,5 @@
 // FUNCIONES JAVASCRIPT - ALIENS ART
 
-// Efecto de escaneo CRT
 document.addEventListener('DOMContentLoaded', function() {
     // Animación de escaneo CRT
     const scanline = document.querySelector('.scanline');
@@ -59,22 +58,96 @@ document.addEventListener('DOMContentLoaded', function() {
     // Formulario de contacto
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
+        const nombreEl = contactForm.querySelector('#nombre');
+        const emailEl = contactForm.querySelector('#email');
+        const asuntoEl = contactForm.querySelector('#asunto');
+        const mensajeEl = contactForm.querySelector('#mensaje');
+        const submitBtn = contactForm.querySelector('.submit-btn');
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+        function getErrorEl(input) {
+            const group = input.closest('.form-group');
+            let err = group.querySelector('.error-msg');
+            if (!err) {
+                err = document.createElement('p');
+                err.className = 'error-msg terminal-text';
+                group.appendChild(err);
+            }
+            return err;
+        }
+
+        function showError(input, message) {
+            const err = getErrorEl(input);
+            err.textContent = message;
+            input.classList.add('invalid');
+            input.setAttribute('aria-invalid', 'true');
+        }
+
+        function clearError(input) {
+            const err = getErrorEl(input);
+            err.textContent = '';
+            input.classList.remove('invalid');
+            input.removeAttribute('aria-invalid');
+        }
+
+        // Limpiar errores al escribir
+        [nombreEl, emailEl, asuntoEl, mensajeEl].forEach(el => {
+            el.addEventListener('input', () => clearError(el));
+            el.addEventListener('blur', () => {
+                // Validación ligera en blur
+                const val = el.value.trim();
+                if (el === nombreEl && val.length < 2) showError(el, 'Ingresá tu nombre (mínimo 2 caracteres).');
+                if (el === emailEl && !emailRegex.test(val)) showError(el, 'Ingresá un email válido.');
+                if (el === asuntoEl && val.length < 3) showError(el, 'Ingresá el asunto (mínimo 3 caracteres).');
+                if (el === mensajeEl && val.length < 10) showError(el, 'El mensaje debe tener al menos 10 caracteres.');
+            });
+        });
+
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
+            let valid = true;
+            const nombre = nombreEl.value.trim();
+            const email = emailEl.value.trim();
+            const asunto = asuntoEl.value.trim();
+            const mensaje = mensajeEl.value.trim();
+
+            if (nombre.length < 2) {
+                showError(nombreEl, 'Ingresá tu nombre (mínimo 2 caracteres).');
+                valid = false;
+            }
+            if (!emailRegex.test(email)) {
+                showError(emailEl, 'Ingresá un email válido.');
+                valid = false;
+            }
+            if (asunto.length < 3) {
+                showError(asuntoEl, 'Ingresá el asunto (mínimo 3 caracteres).');
+                valid = false;
+            }
+            if (mensaje.length < 10) {
+                showError(mensajeEl, 'El mensaje debe tener al menos 10 caracteres.');
+                valid = false;
+            }
+
+            if (!valid) {
+                // Enfocar el primer campo inválido
+                const firstInvalid = contactForm.querySelector('.invalid');
+                if (firstInvalid) firstInvalid.focus();
+                return;
+            }
+
             // Simulación de envío
-            const submitBtn = contactForm.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
-            
             submitBtn.textContent = 'ENVIANDO...';
             submitBtn.disabled = true;
-            
+
             setTimeout(() => {
                 alert('¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.');
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
                 contactForm.reset();
-            }, 1500);
+            }, 1200);
         });
     }
 
@@ -118,6 +191,65 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ejecutar animación al cargar y al hacer scroll
     window.addEventListener('scroll', animateOnScroll);
     animateOnScroll(); // Ejecutar una vez al cargar
+
+    // Lightbox solo para ampliar imágenes
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox-overlay';
+    const lightboxImg = document.createElement('img');
+    lightboxImg.className = 'lightbox-image';
+    lightbox.appendChild(lightboxImg);
+    document.body.appendChild(lightbox);
+
+    function openLightboxImage(url) {
+        lightboxImg.src = url;
+        lightbox.classList.add('open');
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('open');
+        lightboxImg.src = '';
+    }
+
+    // Cierre por click en overlay y tecla Esc
+    lightbox.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Extrae URL del background-image (para imágenes tipo div)
+    function extractBgUrl(el) {
+        const bg = getComputedStyle(el).backgroundImage;
+        const match = bg && bg !== 'none' ? bg.match(/url\((['"]?)(.*?)\1\)/) : null;
+        return match ? match[2] : null;
+    }
+
+    // Hacer clicables imágenes de obras (se excluye la foto de perfil)
+    const clickableImages = document.querySelectorAll('.work-image, img.work-image');
+    clickableImages.forEach(el => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const url = el.tagName.toLowerCase() === 'img' ? el.src : extractBgUrl(el);
+            if (url) openLightboxImage(url);
+        });
+    });
+
+    // NUEVO: Hacer clicables los videos de obras
+    const clickableVideos = document.querySelectorAll('video.work-video');
+    clickableVideos.forEach(videoEl => {
+        videoEl.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            let url = videoEl.src;
+            if (!url) {
+                const source = videoEl.querySelector('source');
+                url = source ? source.src : null;
+            }
+            if (url) openLightboxVideo(url);
+        });
+    });
 });
 
 // Efecto de cursor retro

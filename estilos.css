@@ -528,16 +528,67 @@ footer {
     }
 }
 
-@media (max-width: 480px) {
-    .logo-container h1 {
-        font-size: 2rem;
-    }
-    
-    .hero h2 {
-        font-size: 1.5rem;
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-    }
+/* LIGHTBOX (AMPLIACIÓN DE IMÁGENES Y VIDEOS) */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 2rem;
+}
+
+.lightbox-overlay.open {
+    display: flex;
+}
+
+.lightbox-image {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border: 2px solid var(--color-primary);
+    box-shadow: var(--glow-primary);
+}
+
+/* NUEVO: video en lightbox */
+.lightbox-video {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border: 2px solid var(--color-primary);
+    box-shadow: var(--glow-primary);
+    background: #000;
+}
+
+/* Puntero visual solo en obras (imágenes) */
+.work-image,
+img.work-image {
+    cursor: zoom-in;
+}
+
+/* Desactivar “lupita” en foto de perfil */
+.artist-profile-image,
+.artist-profile-image img {
+    cursor: default;
+}
+.artist-profile-image img,
+img.work-image {
+    cursor: zoom-in;
+}
+
+/* Formularios: evitar overflow del textarea y mantener dentro del contenedor */
+.contact-form .form-control {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-form #mensaje {
+    resize: vertical;           /* solo vertical, no se ensancha */
+    min-height: 140px;          /* altura mínima cómoda */
+    max-height: 60vh;           /* evita cubrir demasiado contenido */
+    overflow-wrap: break-word;  /* rompe palabras muy largas */
+    white-space: pre-wrap;      /* respeta saltos, envuelve líneas */
 }
