@@ -1,7 +1,6 @@
 // FUNCIONES JAVASCRIPT - ALIENS ART
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Animación de escaneo CRT
     const scanline = document.querySelector('.scanline');
     if (scanline) {
         setInterval(() => {
@@ -29,8 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
     terminalTexts.forEach(text => {
         const originalText = text.textContent;
         const textLength = originalText.length;
-        
-        // Solo aplicar a textos cortos para mejor rendimiento
         if (textLength < 100 && Math.random() > 0.7) {
             text.textContent = '';
             let i = 0;
@@ -187,10 +184,8 @@ document.addEventListener('DOMContentLoaded', function() {
         element.style.transform = 'translateY(20px)';
         element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     });
-
-    // Ejecutar animación al cargar y al hacer scroll
     window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Ejecutar una vez al cargar
+    animateOnScroll();
 
     // Lightbox solo para ampliar imágenes
     const lightbox = document.createElement('div');
@@ -229,7 +224,6 @@ document.addEventListener('DOMContentLoaded', function() {
         el.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-
             const url = el.tagName.toLowerCase() === 'img' ? el.src : extractBgUrl(el);
             if (url) openLightboxImage(url);
         });
@@ -251,8 +245,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-// Efecto de cursor retro
 (function() {
     const cursor = document.createElement('div');
     cursor.style.position = 'fixed';

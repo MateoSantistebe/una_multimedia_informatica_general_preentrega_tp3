@@ -30,7 +30,7 @@ body {
     color: var(--color-text);
     line-height: 1.6;
     overflow-x: hidden;
-    background-image: url('images/background.svg');
+    background-image: url('imagenesyvideos/background.svg');
     background-size: cover;
     background-attachment: fixed;
 }
@@ -573,7 +573,8 @@ img.work-image {
 .artist-profile-image img {
     cursor: default;
 }
-.artist-profile-image img,
+
+/* Ajuste: no aplicar "zoom-in" al img de perfil; solo a obras */
 img.work-image {
     cursor: zoom-in;
 }
@@ -585,10 +586,10 @@ img.work-image {
     box-sizing: border-box;
 }
 
-.contact-form #mensaje {
-    resize: vertical;           /* solo vertical, no se ensancha */
-    min-height: 140px;          /* altura mínima cómoda */
-    max-height: 60vh;           /* evita cubrir demasiado contenido */
-    overflow-wrap: break-word;  /* rompe palabras muy largas */
-    white-space: pre-wrap;      /* respeta saltos, envuelve líneas */
+.contact-form #mensaje.form-control {
+    resize: vertical;
+    min-height: 140px;
+    max-height: 60vh;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
 }
