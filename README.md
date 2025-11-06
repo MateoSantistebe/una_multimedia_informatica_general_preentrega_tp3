@@ -1,2 +1,2 @@
-# una_multimedia_informatica_general_preentrega_tp3
+# una_multimedia_informatica_general_entrega_tp3
 #AFONSO_BUFFARINI_CHIAPPETTI_FRIAS_SANTISTEBE
